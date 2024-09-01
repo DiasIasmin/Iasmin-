@@ -1,36 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IndiGames</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1f1f1f;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            background-color: #292929;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #e91e63;
+            margin-bottom: 20px;
+            font-family: 'Trebuchet MS', Helvetica, sans-serif;
+        }
+
+        .categories {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 30px;
+        }
+
+        .categories label {
+            font-size: 1.2em;
+            cursor: pointer;
+            margin-right: 10px;
+            padding: 10px 15px;
+            border-radius: 10px;
+            background-color: #333;
+            transition: background-color 0.3s;
+        }
+
+        .categories input[type="checkbox"] {
+            display: none;
+        }
+
+        .categories input[type="checkbox"]:checked + label {
+            background-color: #e91e63;
+            color: #fff;
+        }
+
+        .game-list {
+            list-style-type: none;
+            padding: 0;
+            display: none;
+        }
+
+        .game-item {
+            padding: 15px;
+            margin-bottom: 10px;
+            background-color: #424242;
+            border-radius: 10px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .game-item img {
+            width: 50px;
+            height: 50px;
+            margin-right: 15px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .game-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .game-info {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #333;
+            border-radius: 10px;
+            display: none;
+            text-align: left;
+        }
+
+        .game-info img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .game-info h2 {
+            margin-top: 0;
+        }
+    </style>
+</head>
 <body>
-    <header>ALURAFLIX</header>
 
-    <section>
-    <section class="chamada">
-        <div class="chamada-texto">
-            <h1>ATRAVÉS DO ARANHAVERSO</h1>
-            <p>#homem-aranha</p>
-@@ -27,6 +27,27 @@ <h1>ATRAVÉS DO ARANHAVERSO</h1>
+    <div class="container">
+        <h1>IndiGames</h1>
+        <div class="categories">
+            <input type="checkbox" id="acao" class="category" value="Ação">
+            <label for="acao">Ação</label>
+            <input type="checkbox" id="aventura" class="category" value="Aventura">
+            <label for="aventura">Aventura</label>
+            <input type="checkbox" id="rpg" class="category" value="RPG">
+            <label for="rpg">RPG</label>
+            <input type="checkbox" id="esporte" class="category" value="Esporte">
+            <label for="esporte">Esporte</label>
+            <input type="checkbox" id="estrategia" class="category" value="Estratégia">
+            <label for="estrategia">Estratégia</label>
         </div>
-    </section>
 
-    <section class="categoria">
-        <h2>Filmes e séries</h2>
-        <div class="categoria-videos">
-            <a href="https://www.youtube.com/watch?v=cs15QqG6Gjc">
-                <img src="https://img.youtube.com/vi/cs15QqG6Gjc/maxresdefault.jpg" />
-            </a>
-            <a href="https://www.youtube.com/watch?v=nCmIwcycUJ8">
-                <img src="https://img.youtube.com/vi/nCmIwcycUJ8/maxresdefault.jpg" />
-            </a>
-            <a href="https://www.youtube.com/watch?v=FvRmEapoHRc">
-                <img src="https://img.youtube.com/vi/FvRmEapoHRc/maxresdefault.jpg" />
-            </a>
-            <a href="https://www.youtube.com/watch?v=Ipkw_hWW-Hw">
-                <img src="https://img.youtube.com/vi/Ipkw_hWW-Hw/maxresdefault.jpg" />
-            </a>
-            <a href="https://www.youtube.com/watch?v=d4DzMNGoyis">
-                <img src="https://img.youtube.com/vi/d4DzMNGoyis/maxresdefault.jpg" />
-            </a>
+        <ul class="game-list">
+            <li class="game-item hidden" data-category="Ação" data-info="Call of Duty: Modern Warfare é um jogo de tiro em primeira pessoa ambientado em cenários de guerra modernos." data-img="https://exemplo.com/cod.jpg">
+                <img src="https://exemplo.com/cod.jpg" alt="Call of Duty">
+                Call of Duty: Modern Warfare
+            </li>
+            <li class="game-item hidden" data-category="Aventura" data-info="The Legend of Zelda: Breath of the Wild é um jogo de ação e aventura em mundo aberto, onde o jogador explora o vasto reino de Hyrule." data-img="https://exemplo.com/zelda.jpg">
+                <img src="https://exemplo.com/zelda.jpg" alt="Zelda">
+                The Legend of Zelda: Breath of the Wild
+            </li>
+            <li class="game-item hidden" data-category="RPG" data-info="The Witcher 3: Wild Hunt é um RPG de mundo aberto onde você assume o papel de Geralt de Rívia, um caçador de monstros em busca de sua filha adotiva." data-img="https://exemplo.com/witcher.jpg">
+                <img src="https://exemplo.com/witcher.jpg" alt="Witcher">
+                The Witcher 3: Wild Hunt
+            </li>
+            <li class="game-item hidden" data-category="Esporte" data-info="FIFA 23 é um simulador de futebol onde você pode jogar com seus times favoritos em várias ligas ao redor do mundo." data-img="https://exemplo.com/fifa.jpg">
+                <img src="https://exemplo.com/fifa.jpg" alt="FIFA">
+                FIFA 23
+            </li>
+            <li class="game-item hidden" data-category="Estratégia" data-info="Civilization VI é um jogo de estratégia onde você lidera uma civilização desde a antiguidade até a era moderna, construindo um império ao longo dos séculos." data-img="https://exemplo.com/civ.jpg">
+                <img src="https://exemplo.com/civ.jpg" alt="Civilization">
+                Civilization VI
+            </li>
+            <li class="game-item hidden" data-category="Ação" data-info="DOOM Eternal é um jogo de tiro em primeira pessoa frenético e violento, onde você luta contra hordas de demônios em um cenário infernal." data-img="https://exemplo.com/doom.jpg">
+                <img src="https://exemplo.com/doom.jpg" alt="DOOM">
+                DOOM Eternal
+            </li>
+            <li class="game-item hidden" data-category="Aventura" data-info="Uncharted 4: A Thief's End é um jogo de ação e aventura onde você acompanha Nathan Drake em sua última jornada em busca de um tesouro perdido." data-img="https://exemplo.com/uncharted.jpg">
+                <img src="https://exemplo.com/uncharted.jpg" alt="Uncharted">
+                Uncharted 4: A Thief's End
+            </li>
+            <li class="game-item hidden" data-category="RPG" data-info="Final Fantasy VII Remake é um RPG de ação que reimagina o clássico jogo com gráficos modernos e uma jogabilidade dinâmica." data-img="https://exemplo.com/ff7.jpg">
+                <img src="https://exemplo.com/ff7.jpg" alt="Final Fantasy VII">
+                Final Fantasy VII Remake
+            </li>
+        </ul>
+
+        <div class="game-info">
+            <img id="game-img" src="" alt="Imagem do jogo">
+            <h2>Informações do Jogo</h2>
+            <p id="game-description"></p>
         </div>
-    </section>
+    </div>
+
+    <script>
+        const checkboxes = document.querySelectorAll('.category');
+        const games = document.querySelectorAll('.game-item');
+        const gameList = document.querySelector('.game-list');
+        const gameInfo = document.querySelector('.game-info');
+        const gameDescription = document.getElementById('game-description');
+        const gameImg = document.getElementById('game-img');
+
+        // Função para mostrar ou ocultar jogos conforme as categorias selecionadas
+        function filterGames() {
+            const selectedCategories = Array.from(checkboxes)
+                .filter(cb => cb.checked)
+                .map(cb => cb.value);
+
+            if (selectedCategories.length > 0) {
+                gameList.style.display = 'block';
+            } else {
+                gameList.style.display = 'none';
+                gameInfo.style.display = 'none';
+            }
+
+            games.forEach(game => {
+                const gameCategory = game.getAttribute('data-category');
+                if (selectedCategories.includes(gameCategory)) {
+                    game.classList.remove('hidden');
+                } else {
+                    game.classList.add('hidden');
+                }
+            });
+        }
+
+        // Adiciona o evento 'change' para filtrar os jogos quando as categorias são selecionadas
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', filterGames);
+        });
+
+        // Exibe as informações do jogo quando um item da lista é clicado
+        games.forEach(game => {
+            game.addEventListener('click', () => {
+                const info = game.getAttribute('data-info');
+                const imgSrc = game.getAttribute('data-img');
+                gameDescription.textContent = info;
+                gameImg.src = imgSrc;
+                gameInfo.style.display = 'block';
+            });
+        });
+
+        // Inicializa a exibição dos jogos ao carregar a página, se as caixas estiverem selecionadas
+        filterGames();
+    </script>
 
 </body>
-
 </html>
